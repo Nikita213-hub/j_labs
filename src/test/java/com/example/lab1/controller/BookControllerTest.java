@@ -30,7 +30,7 @@ class BookControllerTest {
 
     @Test
     void shouldReturnBooksFilteredByAuthorRequestParam() throws Exception {
-        mockMvc.perform(get("/api/books").param("author", "martin"))
+        mockMvc.perform(get("/api/v1/books").param("author", "martin"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].author", Matchers.containsStringIgnoringCase("martin")));
     }
@@ -40,7 +40,7 @@ class BookControllerTest {
         BookRequest request = new BookRequest("Test Driven Development", "Kent Beck", 2003);
         String payload = objectMapper.writeValueAsString(request);
 
-        MvcResult createResult = mockMvc.perform(post("/api/books")
+        MvcResult createResult = mockMvc.perform(post("/api/v1/books")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(payload))
                 .andExpect(status().isCreated())
@@ -50,7 +50,7 @@ class BookControllerTest {
         BookDto created = objectMapper.readValue(createResult.getResponse().getContentAsString(), BookDto.class);
         assertThat(created.id()).isNotNull();
 
-        mockMvc.perform(get("/api/books/{id}", created.id()))
+        mockMvc.perform(get("/api/v1/books/{id}", created.id()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("Test Driven Development"));
     }

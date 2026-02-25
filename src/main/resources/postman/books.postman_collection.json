@@ -12,12 +12,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/api/books",
+          "raw": "{{baseUrl}}/api/v1/books",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "api",
+            "v1",
             "books"
           ]
         }
@@ -29,12 +30,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/api/books?author=martin",
+          "raw": "{{baseUrl}}/api/v1/books?author=martin",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "api",
+            "v1",
             "books"
           ],
           "query": [
@@ -61,12 +63,13 @@
           "raw": "{\n  \"title\": \"Test Driven Development\",\n  \"author\": \"Kent Beck\",\n  \"publicationYear\": 2003\n}"
         },
         "url": {
-          "raw": "{{baseUrl}}/api/books",
+          "raw": "{{baseUrl}}/api/v1/books",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "api",
+            "v1",
             "books"
           ]
         }
