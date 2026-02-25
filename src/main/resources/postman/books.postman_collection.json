@@ -1,0 +1,77 @@
+{
+  "info": {
+    "name": "Lab1 Books API",
+    "_postman_id": "be1b0921-6a8d-4bff-9c5e-6afdde297ca1",
+    "description": "Коллекция запросов для тестирования Books API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "List all books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "books"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Filter by author",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/books?author=martin",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "books"
+          ],
+          "query": [
+            {
+              "key": "author",
+              "value": "martin"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create a new book",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Test Driven Development\",\n  \"author\": \"Kent Beck\",\n  \"publicationYear\": 2003\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/books",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "api",
+            "books"
+          ]
+        }
+      }
+    }
+  ],
+  "event": []
+}
