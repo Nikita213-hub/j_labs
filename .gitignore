@@ -1,0 +1,26 @@
+.DS_Store
+logs/
+target/
+.m2/
+!.mvn/wrapper/maven-wrapper.jar
+!.mvn/wrapper/maven-wrapper.properties
+**/hs_err_pid*
+*.iml
+.idea/
+.classpath
+.project
+.settings/
+bin/
+out/
+build/
+*.log
+*.class
+.mvn/timing.properties
+.vscode/
+
+# Spring specific
+spring.log
+
+# Maven wrapper files for Unix/Windows scripts
+mvnw
+mvnw.cmd
