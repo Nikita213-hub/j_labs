@@ -7,49 +7,49 @@
   },
   "item": [
     {
-      "name": "List all books",
+      "name": "List bugs",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/api/v1/books",
+          "raw": "{{baseUrl}}/api/v1/bugs",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "api",
             "v1",
-            "books"
+            "bugs"
           ]
         }
       }
     },
     {
-      "name": "Filter by author",
+      "name": "Filter bugs by status",
       "request": {
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/api/v1/books?author=martin",
+          "raw": "{{baseUrl}}/api/v1/bugs?status=open",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "api",
             "v1",
-            "books"
+            "bugs"
           ],
           "query": [
             {
-              "key": "author",
-              "value": "martin"
+              "key": "status",
+              "value": "open"
             }
           ]
         }
       }
     },
     {
-      "name": "Create a new book",
+      "name": "Create bug",
       "request": {
         "method": "POST",
         "header": [
@@ -60,17 +60,17 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"title\": \"Test Driven Development\",\n  \"author\": \"Kent Beck\",\n  \"publicationYear\": 2003\n}"
+          "raw": "{\n  \"title\": \"Login form crash\",\n  \"description\": \"Submitting empty credentials causes 500.\",\n  \"priority\": \"HIGH\",\n  \"reporter\": \"qa.john\",\n  \"assignee\": \"dev.sara\"\n}"
         },
         "url": {
-          "raw": "{{baseUrl}}/api/v1/books",
+          "raw": "{{baseUrl}}/api/v1/bugs",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "api",
             "v1",
-            "books"
+            "bugs"
           ]
         }
       }
