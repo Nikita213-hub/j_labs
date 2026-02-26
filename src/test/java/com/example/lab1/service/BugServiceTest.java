@@ -36,17 +36,17 @@ class BugServiceTest {
 
     @Test
     void shouldReturnBugsByStatus() {
-        Bug bug = new Bug(
-                UUID.randomUUID(),
-                "Crash on start",
-                "Null pointer.",
-                BugStatus.OPEN,
-                BugPriority.CRITICAL,
-                "qa.ann",
-                "dev.max",
-                LocalDateTime.now(),
-                LocalDateTime.now()
-        );
+        Bug bug = Bug.builder()
+                .id(UUID.randomUUID())
+                .title("Crash on start")
+                .description("Null pointer.")
+                .status(BugStatus.OPEN)
+                .priority(BugPriority.CRITICAL)
+                .reporter("qa.ann")
+                .assignee("dev.max")
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
+                .build();
         when(bugRepository.findByStatus(BugStatus.OPEN)).thenReturn(List.of(bug));
         BugDto dto = new BugDto(
                 bug.getId(),
@@ -84,28 +84,27 @@ class BugServiceTest {
                 "qa.kat",
                 "dev.art"
         );
-        Bug entity = new Bug(
-                null,
-                request.title(),
-                request.description(),
-                BugStatus.OPEN,
-                request.priority(),
-                request.reporter(),
-                request.assignee(),
-                LocalDateTime.now(),
-                LocalDateTime.now()
-        );
-        Bug saved = new Bug(
-                UUID.randomUUID(),
-                entity.getTitle(),
-                entity.getDescription(),
-                entity.getStatus(),
-                entity.getPriority(),
-                entity.getReporter(),
-                entity.getAssignee(),
-                entity.getCreatedAt(),
-                entity.getUpdatedAt()
-        );
+        Bug entity = Bug.builder()
+                .title(request.title())
+                .description(request.description())
+                .status(BugStatus.OPEN)
+                .priority(request.priority())
+                .reporter(request.reporter())
+                .assignee(request.assignee())
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
+                .build();
+        Bug saved = Bug.builder()
+                .id(UUID.randomUUID())
+                .title(entity.getTitle())
+                .description(entity.getDescription())
+                .status(entity.getStatus())
+                .priority(entity.getPriority())
+                .reporter(entity.getReporter())
+                .assignee(entity.getAssignee())
+                .createdAt(entity.getCreatedAt())
+                .updatedAt(entity.getUpdatedAt())
+                .build();
         BugDto dto = new BugDto(
                 saved.getId(),
                 saved.getTitle(),

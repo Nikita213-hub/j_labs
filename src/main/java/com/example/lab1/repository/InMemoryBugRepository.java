@@ -36,17 +36,17 @@ public class InMemoryBugRepository implements BugRepository {
     private Bug sample(String title, String description, BugStatus status, BugPriority priority,
                        String reporter, String assignee) {
         LocalDateTime now = LocalDateTime.now();
-        return new Bug(
-                UUID.randomUUID(),
-                title,
-                description,
-                status,
-                priority,
-                reporter,
-                assignee,
-                now.minusDays(2),
-                now.minusHours(5)
-        );
+        return Bug.builder()
+                .id(UUID.randomUUID())
+                .title(title)
+                .description(description)
+                .status(status)
+                .priority(priority)
+                .reporter(reporter)
+                .assignee(assignee)
+                .createdAt(now.minusDays(2))
+                .updatedAt(now.minusHours(5))
+                .build();
     }
 
     @Override

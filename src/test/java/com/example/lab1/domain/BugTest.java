@@ -9,22 +9,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 class BugTest {
 
     @Test
-    void constructorShouldAssignAllFields() {
+    void builderShouldAssignAllFields() {
         UUID id = UUID.randomUUID();
         LocalDateTime created = LocalDateTime.now().minusDays(1);
         LocalDateTime updated = LocalDateTime.now();
 
-        Bug bug = new Bug(
-                id,
-                "Null pointer when saving",
-                "Reproduce via POST /bugs with empty description",
-                BugStatus.IN_PROGRESS,
-                BugPriority.HIGH,
-                "qa.nina",
-                "dev.oleg",
-                created,
-                updated
-        );
+        Bug bug = Bug.builder()
+                .id(id)
+                .title("Null pointer when saving")
+                .description("Reproduce via POST /bugs with empty description")
+                .status(BugStatus.IN_PROGRESS)
+                .priority(BugPriority.HIGH)
+                .reporter("qa.nina")
+                .assignee("dev.oleg")
+                .createdAt(created)
+                .updatedAt(updated)
+                .build();
 
         assertThat(bug.getId()).isEqualTo(id);
         assertThat(bug.getTitle()).isEqualTo("Null pointer when saving");

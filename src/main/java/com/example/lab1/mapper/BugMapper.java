@@ -6,7 +6,6 @@ import com.example.lab1.dto.BugDto;
 import com.example.lab1.dto.BugRequest;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -28,17 +27,16 @@ public class BugMapper {
 
     public Bug toEntity(BugRequest request) {
         LocalDateTime now = LocalDateTime.now();
-        return new Bug(
-                (UUID) null,
-                request.title(),
-                request.description(),
-                BugStatus.OPEN,
-                request.priority(),
-                request.reporter(),
-                request.assignee(),
-                now,
-                now
-        );
+        return Bug.builder()
+                .title(request.title())
+                .description(request.description())
+                .status(BugStatus.OPEN)
+                .priority(request.priority())
+                .reporter(request.reporter())
+                .assignee(request.assignee())
+                .createdAt(now)
+                .updatedAt(now)
+                .build();
     }
 
     public List<BugDto> toDtoList(List<Bug> bugs) {
