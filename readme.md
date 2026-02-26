@@ -1,4 +1,4 @@
-# Lab 1 Bug Tracker API
+# Bug Tracker API
 
 Spring Boot REST API for reporting and tracking software bugs by QA engineers and developers.
 
