@@ -1,9 +1,11 @@
 package com.example.lab1.dto;
 
 import com.example.lab1.domain.BugPriority;
+import com.example.lab1.domain.BugStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import java.util.Set;
 
 public record BugRequest(
         @NotBlank
@@ -14,10 +16,12 @@ public record BugRequest(
         String description,
         @NotNull
         BugPriority priority,
-        @NotBlank
-        @Size(max = 60)
-        String reporter,
-        @Size(max = 60)
-        String assignee
+        BugStatus status,
+        @NotNull
+        Long projectId,
+        @NotNull
+        Long reporterId,
+        Long assigneeId,
+        Set<Long> tagIds
 ) {
 }
